@@ -2,9 +2,9 @@
 	-=[Lua Utils]=-
 --]]
 --[[
-	Copia uma variavel, devolvendo uma referência a uma copia exata da mesma ou nulo
+	Copia uma tabela, devolvendo uma referência a uma copia exata da mesma ou nulo
 --]]
-function deepCopy(value)
+function copyTable(value)
 	local r = nil
 	if(type(value) == "table") then
 		r = {}
@@ -43,3 +43,35 @@ function quickSort(table, init, fim)
 	if i < fim then quickSort(v, i, fim) end
 	return v
 end
+
+--[[
+	Pesquisa Binária, retorna o indice de um dado elemento no vetor ordenado ou -1 caso o elemento não exista
+--]]
+function bsearch(vetor, elemento)
+	local i, f = 1, #vetor
+	local m
+	while (i <= f) do
+		m = math.floor((i+f)/2)
+		print(i.." "..m.." "..f)
+		if(elemento < vetor[m]) then
+			f = m-1
+		elseif (elemento > vetor[m]) then
+			i = m+1
+		else
+			return m
+		end
+	end
+	return -1
+end
+
+function naiveSqrt(valor, inicial)
+	local k = 10E-10
+	local r = inicial
+	while math.abs((r*r) - valor) > k do
+		print(r)
+		r = (r+(valor/r))/2
+	end
+	return r
+end
+
+print(naiveSqrt(25,8,2))
