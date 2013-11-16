@@ -39,7 +39,6 @@ public class TemplateString {
      */
     public synchronized final void setTemplate(String template){
         this.template = template;
-        this.template = template;
         int count = 0;
         for (char c : template.toCharArray()) {
             count += c==PARAM_TOKEN?1:0;
