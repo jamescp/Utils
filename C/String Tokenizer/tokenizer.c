@@ -22,8 +22,10 @@ char* nextToken(tok_str* str){
             r[idxR++] = str->str[str->idx++];
 
         }else{
-            if(strlen(r) == 0 && str->returnDelims){
-                r[idxR++] = str->str[str->idx];
+            if(strlen(r) == 0){
+                if(returnDelims){
+                    r[idxR++] = str->str[str->idx];
+                }
                 str->idx++;
             }
             return r;
